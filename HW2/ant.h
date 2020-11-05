@@ -15,12 +15,12 @@ class Ergate:public Ant
 {
     public:
         void work();
-}
+};
 
 class Queen:public Ant
 {
     public:
         void work();
-}
+};
 
 #endif
