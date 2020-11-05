@@ -15,12 +15,32 @@ class Ergate:public Ant
 {
     public:
         void work();
+        Ergate();
 };
 
 class Queen:public Ant
 {
     public:
         void work();
+        bool can_new();
+        Queen();
+};
+
+class Food
+{
+    private:
+        int days;
+    public:
+        Food();
+};
+
+class Pheromone
+{
+    private:
+        int days;
+        int magnitude;  //min:0 , max:TIME_INTERVAL
+    public:
+        Pheromone();
 };
 
 #endif
