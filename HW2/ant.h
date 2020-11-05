@@ -23,5 +23,4 @@ class Queen:public Ant
         void work();
 }
 
-
 #endif
