@@ -2,9 +2,9 @@
 
 int** create_space()
 {
-    int **space = new int* [size + 6];
+    Space **space = new Space* [size + 6];
     for(int i = 0; i < size + 6; i++)
-        space[i] = new int [size + 6];
+        space[i] = new Space [size + 6];
     int count, x, y;
     srand(time(NULL));
 
@@ -34,7 +34,7 @@ int** create_space()
     return space;
 }
 
-void delete_ant(int** s, int x, int y)              //change space[x][y] ant into nothing
+void delete_ant(Space** s, int x, int y)              //change space[x][y] ant into nothing
 {
     if(x < 3 || y < 3 || x > size + 2 || y > size + 2)
         cerr << "delete range out of bondary" << endl;
@@ -61,7 +61,7 @@ void file_write(int** s)        //just write space into file data.txt
     file.close();
 }
 
-int** file_read()           //just read space from file data.txt
+Space** file_read()           //just read space from file data.txt
 {
     ifstream file("data.txt");
     int** ant_map = new int* [size + 6];
@@ -82,7 +82,7 @@ int** file_read()           //just read space from file data.txt
     return ant_map;
 }
 
-void delete_var(int** var)              //release the memory of space variable if no need
+void delete_var(Space** var)              //release the memory of space variable if no need
 {
     for(int i = 0; i < size + 6; i++)
         delete var[i];

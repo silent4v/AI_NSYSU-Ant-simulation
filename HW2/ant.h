@@ -29,7 +29,8 @@ class Ergate:public Ant
 {
     private:    
         Point next_step;
-        Point sensor();      //find food,1 for food detected,0 for food-undetected
+        bool carry_food;
+        Point sensor(Space *);      //find food,1 for food detected,0 for food-undetected
     public:
         void work();
         Ergate();
@@ -40,7 +41,7 @@ class Queen:public Ant
 {
     public:
         void work() {}
-        //bool can_new();
+
         Queen();
         Queen(Point);
 };
@@ -48,11 +49,11 @@ class Queen:public Ant
 class Food
 {
     private:
-        int days;
+        int days,number;
         Point now;
     public:
         Food();
-        Food(Point);
+        Food(Point,int);
 };
 
 class Pheromone
