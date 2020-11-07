@@ -1,0 +1,14 @@
+TIME_INTERVAL 
+SPACE_INTERVAL
+
+mapping object to number:
+    OUTRANGE
+    EMPTY
+    ANT
+    FOOD
+    PHEROMONE
+    HOME
+
+space 功能：
+    create a space 
+    update the space(remove dead thing out of space)
