@@ -20,7 +20,7 @@ class Ant
         bool lived;      //1 for live , 0 for dead
         bool job;        //0 for queen,1 for ergate
         int hungry_day;      //days that hungry
-        Point now;    //position
+        Point now;    //position now
     public:
         Ant();
         virtual void work(Space**) {}
@@ -29,9 +29,9 @@ class Ant
 class Ergate:public Ant
 {
     private:    
-        Point next_step;
-        bool carry_food;
-        Point sensor(Space **);      //find food,1 for food detected,0 for food-undetected
+        Point next_step;            //next position
+        bool carry_food;            //true for carry food , 0 for not
+        Point sensor(Space **);      //return next position
     public:
         void work(Space **);
         Ergate();
@@ -50,11 +50,11 @@ class Queen:public Ant
 class Food
 {
     private:
-        int days,number;
+        int days,number;    
         Point now;
     public:
         Food();
-        Food(Point,int);
+        Food(Point,int);    //point:position int:number
 };
 
 class Pheromone
