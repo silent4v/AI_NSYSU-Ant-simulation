@@ -1,6 +1,7 @@
 #ifndef __ANT_H__
 #define __ANT_H__
 #define TIME_INTERVAL 3
+#include "space.h"
 
 class Point
 {
@@ -22,7 +23,7 @@ class Ant
         Point now;    //position
     public:
         Ant();
-        virtual void work() {}
+        virtual void work(Space**) {}
 };
 
 class Ergate:public Ant
@@ -30,9 +31,9 @@ class Ergate:public Ant
     private:    
         Point next_step;
         bool carry_food;
-        Point sensor(Space *);      //find food,1 for food detected,0 for food-undetected
+        Point sensor(Space **);      //find food,1 for food detected,0 for food-undetected
     public:
-        void work();
+        void work(Space **);
         Ergate();
         Ergate(Point);
 };
@@ -40,7 +41,7 @@ class Ergate:public Ant
 class Queen:public Ant  
 {
     public:
-        void work() {}
+        void work(Space**) {}
 
         Queen();
         Queen(Point);
