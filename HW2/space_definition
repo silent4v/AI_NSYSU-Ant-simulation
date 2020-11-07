@@ -1,6 +1,11 @@
-TIME_INTERVAL 
-SPACE_INTERVAL
-
+define:
+    TIME_INTERVAL 
+    SPACE_INTERVAL
+    MIN_X   //max space index of x
+    MIN_Y   //min space index of y
+    MAX_X   //max space index of x
+    MAX_Y   //max space index of y
+    
 mapping object to number:
     OUTRANGE
     EMPTY

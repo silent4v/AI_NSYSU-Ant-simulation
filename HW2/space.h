@@ -7,8 +7,8 @@
 #include <iomanip>
 using namespace std;
 
-#define TIME_INTERVAL 3;
-#define SPACE_INTERVAL 3;
+#define TIME_INTERVAL 3
+#define SPACE_INTERVAL 3
 #define MIN_X 3
 #define MIN_Y 3
 #define MAX_X size-4
