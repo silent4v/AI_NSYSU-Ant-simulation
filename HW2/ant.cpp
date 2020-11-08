@@ -96,7 +96,7 @@ void Ergate::work(Space** sp)
     if(this->next_step == this->now)
     {
         this->now.set(this->now.x + xx , this->now.y + yy);
-        add_feature(sp,ANT,this->now,this);
+        add_feature(sp,ANT,this,this->now);
     }
         
     else
@@ -104,7 +104,7 @@ void Ergate::work(Space** sp)
         //cout << "(" << this->now.x << "," << this->now.y << ") (" << this->next_step.x << "," << this->next_step.y << ")" << endl;
         sp[this->now.x][this->now.y] = 0;
         this->now = this->next_step;
-        add_feature(sp,ANT,this->now,this);
+        add_feature(sp,ANT,this,this->now);
         this->days = 0;
     }       
 }
@@ -140,28 +140,29 @@ void add_feature(Space** s,int t)
         x = rand() % space_size;
         y = rand() % space_size;
     }while(s[x + MIN_X][y + MIN_Y] != 0);
-    
     s[x + MIN_X][y + MIN_Y] = t;
+    Base* res;
     switch(t)
     {
         case ANT:
-            space_map[Point(x+MIN_X,y+MIN_Y)] = new Ergate(Point(x+MIN_X,y+MIN_Y));
+            res = new Ergate(Point(x+MIN_X,y+MIN_Y));
             break;
         case PHEROMONE:
-            space_map[Point(x+MIN_X,y+MIN_Y)] = new Pheromone(Point(x+MIN_X,y+MIN_Y));
+            res= new Pheromone(Point(x+MIN_X,y+MIN_Y));
             break;
         case FOOD:
-            space_map[Point(x+MIN_X,y+MIN_Y)] = new Food(Point(x+MIN_X,y+MIN_Y),random()%20);
+            res = new Food(Point(x+MIN_X,y+MIN_Y),random()%20);
             break;
         default:
             break;
     }
+    space_map[res] = Point(x+MIN_X,y+MIN_Y);
 }
 
-void add_feature(Space** s,int t,Point o,Base *b)
+void add_feature(Space** s,int t,Base *b,Point o)
 {
     s[o.y][o.x] = t;
-    cache[o] = b;
+    cache[b] = o;
 }
 
 void delete_ant(Space** s, int x, int y)              //change space[x][y] ant into nothing

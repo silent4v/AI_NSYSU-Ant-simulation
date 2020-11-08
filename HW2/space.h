@@ -27,18 +27,18 @@ using namespace std;
 typedef int Space;
 const int ant_amount = 5;
 const int space_size = 100;
-extern map<Point,Base*>space_map;
-extern map<Point,Base*>::iterator p;
-extern map<Point,Base*>cache;
-extern map<Point,Base*>::iterator q;
+extern map<Base*,Point>space_map;
+extern map<Base*,Point>::iterator p;
+extern map<Base*,Point>cache;
+extern map<Base*,Point>::iterator q;
 
 Space** create_space();     //create a space and initialize 
 void add_feature(Space**,int t);     //add feature to space , t : feature table
-void add_feature(Space**,int,Point,Base*);
+void add_feature(Space**,int,Base*,Point);
 void delete_ant(Space** s, int x, int y);
 void file_write(Space** s);
 Space** file_read();
 void delete_var(Space** var);
-void map_update(map<Point,Base*>&,map<Point,Base*>&);
+void map_update(map<Base*,Point>&,map<Base*,Point>&);
 
 #endif

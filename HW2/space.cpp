@@ -1,9 +1,9 @@
 #include "space.h"
 
 
-map<Point,Base*>space_map;
-map<Point,Base*>::iterator p;
-map<Point,Base*>cache;
+map<Base*,Point>space_map;
+map<Base*,Point>::iterator p;
+map<Base*,Point>cache;
 int** create_space()
 {
     space_map.clear();
@@ -80,7 +80,7 @@ void delete_var(Space** var)              //release the memory of space variable
     delete var;
 }
 
-void map_update(map<Point,Base*> &x,map<Point,Base*> &y)
+void map_update(map<Base*,Point> &x,map<Base*,Point> &y)
 {
     x = y;
     y.clear();
