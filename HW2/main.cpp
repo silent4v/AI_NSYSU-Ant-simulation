@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ant.h"
+#include <unistd.h>
 using namespace std;
 int main()
 {
@@ -7,18 +8,20 @@ int main()
     bool alive;
     char temp;
     file_write(tt);
-    for(p = space_map.begin() ; p != space_map.end() ; p++)
-        cout << "h " << p->second.x << " " << p->second.y << endl;
+    /*for(p = space_map.begin() ; p != space_map.end() ; p++)
+        cout << "h " << p->second.x << " " << p->second.y << endl;*/
     
     while(1)
     {
+        for(p = space_map.begin() ; p != space_map.end() ; p++)
+           cout << p->second.x << " " << p->second.y << endl;
         for(p = space_map.begin(); p != space_map.end(); p++)
         {
             tempx = p->second.x; tempy = p->second.y;
             alive = p->first->add_day();
             if(alive)
             {
-                cout << "alive" << endl;
+                //cout << "alive" << endl;
                 p->first->work(tt);
                 //cout << "finished" << endl;
             }
@@ -32,8 +35,9 @@ int main()
         cout << endl;
 
         map_update(space_map, cache);
-        cin >> temp;
+        add_feature(tt, FOOD);
         file_write(tt);
+        sleep(1);
     }
     delete_var(tt);
     return 0;
