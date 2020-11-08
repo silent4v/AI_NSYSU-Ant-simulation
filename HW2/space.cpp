@@ -2,41 +2,46 @@
 
 int** create_space()
 {
-    Space **space = new Space* [size + 6];
-    for(int i = 0; i < size + 6; i++)
-        space[i] = new Space [size + 6];
-    int count, x, y;
+    Space **space = new Space* [space_size + (SPACE_INTERVAL * 2) ];
+    for(int i = 0; i < space_size + (SPACE_INTERVAL * 2) ; i++)
+        space[i] = new Space [space_size + (SPACE_INTERVAL * 2) ];
     srand(time(NULL));
-
-    for(int i = 0; i < size + 6; i++)        //initialize the space
-        for(int j = 0; j < size + 6; j++)
+    int count;
+    for(int i = 0; i < space_size + (SPACE_INTERVAL * 2) ; i++)     //initialize the space
+    {
+        for(int j = 0; j < space_size + (SPACE_INTERVAL * 2) ; j++)
         {
-            if(i < 3 || i > size + 2 || j < 3 || j > size + 2)
+            if(i < MIN_X || i > MAX_X || j < MIN_Y || j > MAX_Y)
                 space[i][j] = -1;
             else
                 space[i][j] = 0;
         }
+    }       
+        
     
-    space[3][3] = 5;       //set x = 0, y = 0 and value 5 is ant nest
+    space[MIN_X][MIN_Y] = HOME;       //set x = 0, y = 0 and value 5 is ant nest
 
-    count = 0;
-    while(count < ant_amount)       //add ant into space
-    {
-        x = rand() % 100;
-        y = rand() % 100;
-        if(space[x + 3][y + 3] != 0)
-               continue;
-
-        count++;
-        space[x + 3][y + 3] = 1;
-    }
+    for(int i = 0 ; i < ant_amount ; i++)
+        add_feature(space,ANT);
 
     return space;
 }
 
+void add_feature(Space** s,int t)
+{
+    int x,y;
+    do
+    {
+        x = rand() % space_size;
+        y = rand() % space_size;
+    }while(s[x + MIN_X][y + MIN_Y] != 0);
+            
+    s[x + MIN_X][y + MIN_Y] = t;
+}
+
 void delete_ant(Space** s, int x, int y)              //change space[x][y] ant into nothing
 {
-    if(x < 3 || y < 3 || x > size + 2 || y > size + 2)
+    if(x < MIN_X || y < MIN_Y || x > MAX_X || y > MAX_Y)
         cerr << "delete range out of bondary" << endl;
     else
         s[x][y] = 0;
@@ -50,9 +55,9 @@ void file_write(int** s)        //just write space into file data.txt
         cerr << "file data.txt cannot open" << endl;        //connot open data.txt just in case
     else
     {
-        for(int i = 0; i < size + 6; i++)
+        for(int i = 0; i < space_size + (SPACE_INTERVAL * 2) ; i++)
         {
-            for(int j = 0; j < size + 6; j++)
+            for(int j = 0; j < space_size + (SPACE_INTERVAL * 2) ; j++)
                 file << s[i][j] << " ";
             file << endl;
         }
@@ -64,16 +69,16 @@ void file_write(int** s)        //just write space into file data.txt
 Space** file_read()           //just read space from file data.txt
 {
     ifstream file("data.txt");
-    int** ant_map = new int* [size + 6];
+    int** ant_map = new int* [space_size + (SPACE_INTERVAL * 2) ];
 
     if(!file)
         cerr << "file data.txt cannot open" << endl;
     else
     {
-        for(int i = 0; i < size + 6; i++)
+        for(int i = 0; i < space_size + (SPACE_INTERVAL * 2) ; i++)
         {
-            ant_map[i] = new int [size + 6];
-            for(int j = 0; j < size + 6; j++)
+            ant_map[i] = new int [space_size + (SPACE_INTERVAL * 2) ];
+            for(int j = 0; j < space_size + (SPACE_INTERVAL * 2) ; j++)
                 file >> ant_map[i][j];
         }
     }
@@ -84,7 +89,7 @@ Space** file_read()           //just read space from file data.txt
 
 void delete_var(Space** var)              //release the memory of space variable if no need
 {
-    for(int i = 0; i < size + 6; i++)
+    for(int i = 0; i < space_size + (SPACE_INTERVAL * 2) ; i++)
         delete var[i];
     delete var;
 }
