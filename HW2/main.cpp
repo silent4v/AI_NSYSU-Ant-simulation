@@ -53,7 +53,6 @@ int main()
         if(rand() % 3 == 0)
             add_feature(tt, FOOD);
         file_write(tt);
-        getchar();
         sleep(1);
     }
     delete_var(tt);
