@@ -88,10 +88,22 @@ Point Ergate::sensor(Space** sp)     //Space is defined in
                     this->carry_food = true;
                     return Point(i,j);
                 case PHEROMONE:
-                    for_return = Point(i,j);
                     break;
                 default:
                     break;
+            }
+        }
+    }
+    for(int i = this->now.x - SPACE_INTERVAL  - 2 ; i <= this->now.x + SPACE_INTERVAL + 2 ; i++)
+    {
+        for(int j = this->now.y - SPACE_INTERVAL - 2 ; j < this->now.y + SPACE_INTERVAL + 2 ; j++)
+        {
+            if(i >= this->now.x - SPACE_INTERVAL || i <= this->now.x + SPACE_INTERVAL || j >= this->now.y - SPACE_INTERVAL || j <= this->now.y + SPACE_INTERVAL)
+                continue;
+            else if(sp[i][j] == PHEROMONE)
+            {
+                for_return = Point(i,j);
+                break;
             }
         }
     }
