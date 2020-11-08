@@ -131,3 +131,42 @@ void Pheromone::add_day()
     this->days++;
     this->magnitude--;
 }
+
+void add_feature(Space** s,int t)
+{
+    int x,y;
+    do
+    {
+        x = rand() % space_size;
+        y = rand() % space_size;
+    }while(s[x + MIN_X][y + MIN_Y] != 0);
+    
+    s[x + MIN_X][y + MIN_Y] = t;
+    switch(t)
+    {
+        case ANT:
+            space_map[Point(x+MIN_X,y+MIN_Y)] = new Ergate();
+            break;
+        case PHEROMONE:
+            space_map[Point(x+MIN_X,y+MIN_Y)] = new Pheromone();
+            break;
+        case FOOD:
+            space_map[Point(x+MIN_X,y+MIN_Y)] = new Food();
+            break;
+        default:
+            break;
+    }
+}
+
+void delete_ant(Space** s, int x, int y)              //change space[x][y] ant into nothing
+{
+    if(x < MIN_X || y < MIN_Y || x > MAX_X || y > MAX_Y)
+        cerr << "delete range out of bondary" << endl;
+    else
+    {
+        s[x][y] = 0;
+        p = space_map.find(Point(x,y));
+        delete p->second;
+        space_map.erase(p);
+    }
+}
