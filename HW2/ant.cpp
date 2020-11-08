@@ -169,10 +169,5 @@ void delete_ant(Space** s, int x, int y)              //change space[x][y] ant i
     if(x < MIN_X || y < MIN_Y || x > MAX_X || y > MAX_Y)
         cerr << "delete range out of bondary" << endl;
     else
-    {
         s[x][y] = 0;
-        p = space_map.find(Point(x,y));
-        delete p->second;
-        space_map.erase(p);
-    }
 }
