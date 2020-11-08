@@ -2,6 +2,7 @@
 
 int** create_space()
 {
+    space_map.clear();
     Space **space = new Space* [space_size + (SPACE_INTERVAL * 2) ];
     for(int i = 0; i < space_size + (SPACE_INTERVAL * 2) ; i++)
         space[i] = new Space [space_size + (SPACE_INTERVAL * 2) ];
@@ -23,29 +24,10 @@ int** create_space()
 
     for(int i = 0 ; i < ant_amount ; i++)
         add_feature(space,ANT);
-
+    
     return space;
 }
 
-void add_feature(Space** s,int t)
-{
-    int x,y;
-    do
-    {
-        x = rand() % space_size;
-        y = rand() % space_size;
-    }while(s[x + MIN_X][y + MIN_Y] != 0);
-            
-    s[x + MIN_X][y + MIN_Y] = t;
-}
-
-void delete_ant(Space** s, int x, int y)              //change space[x][y] ant into nothing
-{
-    if(x < MIN_X || y < MIN_Y || x > MAX_X || y > MAX_Y)
-        cerr << "delete range out of bondary" << endl;
-    else
-        s[x][y] = 0;
-}
 
 void file_write(int** s)        //just write space into file data.txt
 {
