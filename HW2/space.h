@@ -11,13 +11,19 @@ using namespace std;
 #define SPACE_INTERVAL 3
 #define MIN_X 3
 #define MIN_Y 3
-#define MAX_X size-4
-#define MAX_Y size-4
+#define MAX_X space_size+SPACE_INTERVAL-1
+#define MAX_Y space_size+SPACE_INTERVAL-1
+//feature table
+#define ANT 1
+#define PHEROMONE 2
+#define FOOD 3
+#define HOME 5
 typedef int Space;
 const int ant_amount = 5;
-const int size = 100;
+const int space_size = 100;
 
-Space** create_space();
+Space** create_space();     //create a space and initialize 
+void add_feature(Space**,int t);     //add feature to space , t : feature table
 void delete_ant(Space** s, int x, int y);
 void file_write(Space** s);
 Space** file_read();
