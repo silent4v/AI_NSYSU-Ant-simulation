@@ -121,7 +121,8 @@ void Ergate::work(Space** sp)
             this->carry_food = false;
         else
             add_feature(sp,ANT,this,this->now);
-        this->days = 0;
+        if(this->carry_food)
+            this->days = 0;
     }       
 }
 
