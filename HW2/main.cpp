@@ -45,7 +45,8 @@ int main()
             }
         }
         map_update(space_map, cache);
-        //add_feature(tt, FOOD);
+        if(rand() % 3 == 0)
+            add_feature(tt, FOOD);
         file_write(tt);
         //getchar();
         sleep(1);
