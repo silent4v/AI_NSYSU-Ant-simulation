@@ -90,7 +90,7 @@ void Ergate::work(Space** sp)
     {
         xx = random() % SPACE_INTERVAL;
         yy = random() % SPACE_INTERVAL;
-    } while((xx < MIN_X)||(yy < MIN_Y)||(xx > MAX_X)||(yy > MAX_X));
+    } while((this->now.x + xx < MIN_X)||(this->now.y + yy < MIN_Y)||(this->now.x + xx > MAX_X)||(this->now.y + yy > MAX_Y));
 
     this->next_step = this->sensor(sp);   //if food-undetected , random walk
     if(this->next_step == this->now)
