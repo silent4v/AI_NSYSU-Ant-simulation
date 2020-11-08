@@ -30,12 +30,21 @@ int main()
                 cout << "dead" << endl;
             }
             
-            delete_ant(tt, tempx, tempy);
+            //delete_ant(tt, tempx, tempy);
         }
         cout << endl;
-
+        for(int i = 0 ; i < space_size + (SPACE_INTERVAL * 2) ; i++)
+        {
+            for(int j = 0 ; j < space_size + (SPACE_INTERVAL * 2) ; j++)
+            {
+                if(tt[i][j] > PHEROMONE)
+                    tt[i][j]--;
+                else if(tt[i][j] == PHEROMONE)
+                    tt[i][j] = 0; 
+            }
+        }
         map_update(space_map, cache);
-        add_feature(tt, FOOD);
+        //add_feature(tt, FOOD);
         file_write(tt);
         sleep(1);
     }

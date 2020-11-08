@@ -91,8 +91,8 @@ void Ergate::work(Space** sp)
         xx = (random() % (SPACE_INTERVAL*2-1)) - (SPACE_INTERVAL);
         yy = (random() % (SPACE_INTERVAL*2-1)) - (SPACE_INTERVAL);
     } while((this->now.x + xx < MIN_X)||(this->now.y + yy < MIN_Y)||(this->now.x + xx > MAX_X)||(this->now.y + yy > MAX_Y));
+    
     sp[this->now.x][this->now.y] = PHEROMONE;
-    //cout << "(" << this->now.x << "," << this->now.y << ") " << sp[this->now.x][this->now.y] << endl;
     this->next_step = this->sensor(sp);   //if food-undetected , random walk
     if(this->next_step == this->now)
     {
