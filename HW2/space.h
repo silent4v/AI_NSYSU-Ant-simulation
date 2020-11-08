@@ -5,6 +5,8 @@
 #include <time.h>
 #include <cstdlib>
 #include <iomanip>
+#include <map>
+#include "base_object.h"
 using namespace std;
 
 #define TIME_INTERVAL 3
@@ -21,6 +23,8 @@ using namespace std;
 typedef int Space;
 const int ant_amount = 5;
 const int space_size = 100;
+map<Point,Base*>space_map;
+map<Point,Base*>::iterator p;
 
 Space** create_space();     //create a space and initialize 
 void add_feature(Space**,int t);     //add feature to space , t : feature table
