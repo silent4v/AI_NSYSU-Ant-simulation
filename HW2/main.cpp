@@ -4,8 +4,7 @@
 using namespace std;
 int main()
 {
-    Space **tt = create_space(), tempx, tempy;
-    tt[space_map.begin()->second.x + 1][space_map.begin()->second.y + 1] = FOOD;
+    Space **tt = create_space();
     bool alive;
     char temp;
     file_write(tt);
@@ -24,7 +23,6 @@ int main()
            cout << p->second.x << " " << p->second.y << endl;
         for(p = space_map.begin(); p != space_map.end(); p++)
         {
-            tempx = p->second.x; tempy = p->second.y;
             alive = p->first->add_day();
             if(alive)
                 p->first->work(tt);
@@ -33,8 +31,6 @@ int main()
                 tt[p->second.x][p->second.y] = 0;
                 cout << "dead" << endl;
             }
-            
-            //delete_ant(tt, tempx, tempy);
         }
         cout << endl;
         for(int i = MIN_X ; i < MAX_X ; i++)
@@ -48,8 +44,8 @@ int main()
             }
         }
         map_update(space_map, cache);
-        /*if(rand() % 3 == 0)
-            add_feature(tt, FOOD);*/
+        if(rand() % 3 == 0)
+            add_feature(tt, FOOD);
         file_write(tt);
         getchar();
         sleep(1);
