@@ -27,5 +27,5 @@ bool operator <(Point a,Point b)
 {
     if(a.x == a.y)
         return (a.y < b.y) ? true : false;
-    return (a.x < b.x) ? ture : false;
+    return (a.x < b.x) ? true : false;
 }

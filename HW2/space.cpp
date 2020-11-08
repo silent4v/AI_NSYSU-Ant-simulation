@@ -1,5 +1,8 @@
 #include "space.h"
 
+
+map<Point,Base*>space_map;
+map<Point,Base*>::iterator p;
 int** create_space()
 {
     space_map.clear();

@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 {
-    Ergate A();
-    Queen B();
+    Space **tt = create_space();
+    delete_var(tt);
     return 0;
 }

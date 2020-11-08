@@ -23,8 +23,8 @@ using namespace std;
 typedef int Space;
 const int ant_amount = 5;
 const int space_size = 100;
-map<Point,Base*>space_map;
-map<Point,Base*>::iterator p;
+extern map<Point,Base*>space_map;
+extern map<Point,Base*>::iterator p;
 
 Space** create_space();     //create a space and initialize 
 void add_feature(Space**,int t);     //add feature to space , t : feature table

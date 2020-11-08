@@ -2,7 +2,6 @@
 #define __ANT_H__
 #define TIME_INTERVAL 3
 #include "space.h"
-#include "base_object.h"
 
 class Ant:public Base
 {
