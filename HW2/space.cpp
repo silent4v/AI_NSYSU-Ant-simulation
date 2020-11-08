@@ -82,6 +82,7 @@ void delete_var(Space** var)              //release the memory of space variable
 
 void map_update(map<Base*,Point> &x,map<Base*,Point> &y)
 {
+    x.clear();
     x = y;
     y.clear();
 }

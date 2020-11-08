@@ -95,13 +95,13 @@ void Ergate::work(Space** sp)
     this->next_step = this->sensor(sp);   //if food-undetected , random walk
     if(this->next_step == this->now)
     {
+        sp[this->now.x][this->now.y] = 0;
         this->now.set(this->now.x + xx , this->now.y + yy);
         add_feature(sp,ANT,this,this->now);
     }
         
     else
     {
-        //cout << "(" << this->now.x << "," << this->now.y << ") (" << this->next_step.x << "," << this->next_step.y << ")" << endl;
         sp[this->now.x][this->now.y] = 0;
         this->now = this->next_step;
         add_feature(sp,ANT,this,this->now);
