@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 {
-    Space **tt = create_space();
+    Space **tt = create_space(), tempx, tempy;
     bool alive;
     char temp;
     file_write(tt);
@@ -12,8 +12,9 @@ int main()
     
     while(1)
     {
-        for(p = space_map.begin() ; p != space_map.end() ; p++)
+        for(p = space_map.begin(); p != space_map.end(); p++)
         {
+            tempx = p->second.x; tempy = p->second.y;
             alive = p->first->add_day();
             if(alive)
             {
@@ -24,17 +25,15 @@ int main()
             else
             {
                 cout << "dead" << endl;
-                //cout << "dead" << endl;
             }
+            
+            delete_ant(tt, tempx, tempy);
         }
         cout << endl;
 
         map_update(space_map, cache);
-        //cout << "hello" << endl;
-        for(p = space_map.begin() ; p != space_map.end() ; p++)
-            cout << p->second.x << " " << p->second.y << endl;
-        cout << endl;
         cin >> temp;
+        file_write(tt);
     }
     delete_var(tt);
     return 0;
