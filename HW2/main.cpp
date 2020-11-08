@@ -7,6 +7,12 @@ int main()
     file_write(tt);
     for(p = space_map.begin() ; p != space_map.end() ; p++)
         cout << p->first.x << " " << p->first.y << endl;
+    cout << endl;
+    for(p = space_map.begin() ; p != space_map.end() ; p++)
+        p->second->work(tt);
+    map_update(space_map);
+    for(p = space_map.begin() ; p != space_map.end() ; p++)
+        cout << p->first.x << " " << p->first.y << endl;
     delete_var(tt);
     return 0;
 }

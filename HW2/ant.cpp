@@ -52,7 +52,6 @@ Food::Food()
     this->number = 0;
 }
 
-
 Food::Food(Point t,int x)
 {
     this->days = 0;
@@ -102,17 +101,20 @@ void Ergate::work(Space** sp)
     this->next_step = this->sensor(sp);   //if food-undetected , random walk
     if(this->next_step == this->now)
     {
-        this->now.set(this->now.x + random() % SPACE_INTERVAL , this->now.y + random() % SPACE_INTERVAL);
+        this->now.set(this->now.x + (random() % SPACE_INTERVAL) , this->now.y + (random() % SPACE_INTERVAL));
+        //cout << "(" << this->now.x << "," << this->now.y << ") (" << this->next_step.x << "," << this->next_step.y << ")" << endl;
+        add_feature(sp,ANT,this->now,this);
         if(++this->days == TIME_INTERVAL)
             this->lived = false;
     }
         
     else
     {
-        p = space_map.find(this->now);
+        //p = space_map.find(this->now);
+        cout << "(" << this->now.x << "," << this->now.y << ") (" << this->next_step.x << "," << this->next_step.y << ")" << endl;
         this->now = this->next_step;
         add_feature(sp,ANT,this->now,this);
-        space_map.erase(p);
+        //space_map.erase(p);
         this->days = 0;
     }       
 }

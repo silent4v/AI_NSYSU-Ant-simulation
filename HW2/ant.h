@@ -10,7 +10,7 @@ class Ant:public Base
     public:
         void add_day();
         Ant();
-        virtual void work(Space**) {}
+        void work(Space**) {}
 };
 
 class Ergate:public Ant
@@ -40,6 +40,7 @@ class Food:public Base
         int number;    
     public:
         void add_day();
+        void work(Space **) {}
         Food();
         Food(Point,int);    //point:position int:number
 };
@@ -50,6 +51,7 @@ class Pheromone:public Base
         int magnitude;  //min:0 , max:TIME_INTERVAL
     public:
         void add_day();
+        void work(Space **) {}
         Pheromone();
         Pheromone(Point);
 };

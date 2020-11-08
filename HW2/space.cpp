@@ -16,9 +16,9 @@ int** create_space()
         for(int j = 0; j < space_size + (SPACE_INTERVAL * 2) ; j++)
         {
             if(i < MIN_X || i > MAX_X || j < MIN_Y || j > MAX_Y)
-                space[i][j] = -1;
+                space[i][j] = OUT_RANGE;
             else
-                space[i][j] = 0;
+                space[i][j] = EMPTY;
         }
     }       
         
@@ -77,4 +77,10 @@ void delete_var(Space** var)              //release the memory of space variable
     for(int i = 0; i < space_size + (SPACE_INTERVAL * 2) ; i++)
         delete var[i];
     delete var;
+}
+
+void map_update(map<Point,Base*>x)
+{
+    for(p = x.begin() ; p != x.end() ; p++)
+        cout << "(" << p->first.x << "," << p->first.y << ") (" << p->second->now.y << "," << p->second->now.y << ")" << endl;
 }
