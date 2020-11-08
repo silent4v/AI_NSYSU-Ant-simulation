@@ -2,26 +2,15 @@
 #define __ANT_H__
 #define TIME_INTERVAL 3
 #include "space.h"
+#include "base_object.h"
 
-class Point
-{
-    public:
-        int x,y;
-        Point& operator =(Point); 
-        Point();
-        Point(int,int);
-        void set(int,int);
-        friend bool operator ==(Point,Point);
-};
-
-class Ant
+class Ant:public Base
 {
     protected:
         bool lived;      //1 for live , 0 for dead
         bool job;        //0 for queen,1 for ergate
-        int hungry_day;      //days that hungry
-        Point now;    //position now
     public:
+        void add_day();
         Ant();
         virtual void work(Space**) {}
 };
@@ -47,23 +36,22 @@ class Queen:public Ant
         Queen(Point);
 };
 
-class Food
+class Food:public Base
 {
     private:
-        int days,number;    
-        Point now;
+        int number;    
     public:
+        void add_day();
         Food();
         Food(Point,int);    //point:position int:number
 };
 
-class Pheromone
+class Pheromone:public Base
 {
     private:
-        int days;
         int magnitude;  //min:0 , max:TIME_INTERVAL
-        Point now;
     public:
+        void add_day();
         Pheromone();
         Pheromone(Point);
 };
