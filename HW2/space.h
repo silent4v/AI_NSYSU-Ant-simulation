@@ -20,9 +20,9 @@ using namespace std;
 #define OUT_RANGE -1
 #define EMPTY 0
 #define ANT 1
-#define PHEROMONE 2
-#define FOOD 3
-#define HOME 4
+#define PHEROMONE 4
+#define FOOD 2
+#define HOME 3
 
 typedef int Space;
 const int ant_amount = 5;
