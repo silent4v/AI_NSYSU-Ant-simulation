@@ -5,6 +5,7 @@ using namespace std;
 int main()
 {
     Space **tt = create_space(), tempx, tempy;
+    tt[space_map.begin()->second.x + 1][space_map.begin()->second.y + 1] = FOOD;
     bool alive;
     char temp;
     file_write(tt);
@@ -45,10 +46,10 @@ int main()
             }
         }
         map_update(space_map, cache);
-        if(rand() % 3 == 0)
-            add_feature(tt, FOOD);
+        /*if(rand() % 3 == 0)
+            add_feature(tt, FOOD);*/
         file_write(tt);
-        //getchar();
+        getchar();
         sleep(1);
     }
     delete_var(tt);
