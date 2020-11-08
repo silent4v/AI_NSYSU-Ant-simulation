@@ -78,9 +78,9 @@ Point Ergate::sensor(Space** sp)     //Space is defined in
     if((this->carry_food))      //go home
         return Point(this->now.x - SPACE_INTERVAL ,this->now.y - SPACE_INTERVAL);
     
-    for(int i = this->now.y - SPACE_INTERVAL ; i <= this->now.y + SPACE_INTERVAL ; i++)
+    for(int i = this->now.x - SPACE_INTERVAL ; i <= this->now.x + SPACE_INTERVAL ; i++)
     {
-        for(int j = this->now.x - SPACE_INTERVAL ; j < this->now.x + SPACE_INTERVAL ; j++)
+        for(int j = this->now.y - SPACE_INTERVAL ; j < this->now.y + SPACE_INTERVAL ; j++)
         {
             switch(sp[i][j])
             {
