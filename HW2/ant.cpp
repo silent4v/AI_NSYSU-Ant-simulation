@@ -97,8 +97,6 @@ void Ergate::work(Space** sp)
     {
         this->now.set(this->now.x + xx , this->now.y + yy);
         add_feature(sp,ANT,this->now,this);
-        if(++this->days == TIME_INTERVAL)
-            this->lived = false;
     }
         
     else
