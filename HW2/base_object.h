@@ -20,7 +20,7 @@ class Base
     protected:
         int days;
     public:
-        virtual void add_day() {}
+        virtual bool add_day() {return true;}
         virtual void work(Space**) {}
         Point now;
 };

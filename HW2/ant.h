@@ -8,7 +8,7 @@ class Ant:public Base
         bool lived;      //1 for live , 0 for dead
         bool job;        //0 for queen,1 for ergate
     public:
-        void add_day();
+        bool add_day();
         Ant();
         void work(Space**) {}
 };
@@ -39,7 +39,7 @@ class Food:public Base
     private:
         int number;    
     public:
-        void add_day();
+        bool add_day();
         void work(Space **) {}
         Food();
         Food(Point,int);    //point:position int:number
@@ -50,7 +50,7 @@ class Pheromone:public Base
     private:
         int magnitude;  //min:0 , max:TIME_INTERVAL
     public:
-        void add_day();
+        bool add_day();
         void work(Space **) {}
         Pheromone();
         Pheromone(Point);

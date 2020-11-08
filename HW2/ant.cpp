@@ -124,21 +124,27 @@ void Ergate::work(Space** sp)
     }       
 }
 
-void Ant::add_day()
+bool Ant::add_day()
 {
     if(++(this->days) == TIME_INTERVAL)
         this->lived = false;
+    return this->lived;
 }
 
 void Food::add_day()
 {
-    this->days++;   
+    if(++this->days == TIME_INTERVAL)
+        return false;
+    return true;
 }
 
 void Pheromone::add_day()
 {
     this->days++;
     this->magnitude--;
+    if(this->days == TIME_INTERVAL)
+        return false;
+    return true;
 }
 
 void add_feature(Space** s,int t)
