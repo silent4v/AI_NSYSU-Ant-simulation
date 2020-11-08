@@ -74,6 +74,7 @@ Pheromone::Pheromone(Point t)
 
 Point Ergate::sensor(Space** sp)     //Space is defined in 
 {
+    Point for_return = this->now;
     if((this->carry_food))      //go home
         return Point(this->now.x - SPACE_INTERVAL ,this->now.y - SPACE_INTERVAL);
     
@@ -87,13 +88,14 @@ Point Ergate::sensor(Space** sp)     //Space is defined in
                     this->carry_food = true;
                     return Point(j,i);
                 case PHEROMONE:
-                    return Point(j,i);
+                    for_return = Point(j,i);
+                    break;
                 default:
                     break;
             }
         }
     }
-    return this->now;
+    return for_return;
 }
 
 void Ergate::work(Space** sp)
@@ -104,8 +106,8 @@ void Ergate::work(Space** sp)
         xx = (random() % (SPACE_INTERVAL*2-1)) - (SPACE_INTERVAL);
         yy = (random() % (SPACE_INTERVAL*2-1)) - (SPACE_INTERVAL);
     } while((this->now.x + xx < MIN_X)||(this->now.y + yy < MIN_Y)||(this->now.x + xx > MAX_X)||(this->now.y + yy > MAX_Y));
-    
-    sp[this->now.x][this->now.y] = PHEROMONE + PHEROMONE_CONST;
+    if(this->now != Point(MIN_X,MIN_Y))
+        sp[this->now.x][this->now.y] = PHEROMONE + PHEROMONE_CONST;
     this->next_step = this->sensor(sp);   //if food-undetected , random walk
     if(this->next_step == this->now)
     {
@@ -115,7 +117,10 @@ void Ergate::work(Space** sp)
     else
     {
         this->now = this->next_step;
-        add_feature(sp,ANT,this,this->now);
+        if(this->now == Point(MIN_X,MIN_Y))
+            this->carry_food = false;
+        else
+            add_feature(sp,ANT,this,this->now);
         this->days = 0;
     }       
 }
