@@ -42,7 +42,7 @@ bool operator ==(Point a,Point b)
 Ant::Ant()
 {
     this->lived = true;
-    this->hungry_day = 0;
+    this->days = 0;
 }
 
 Ergate::Ergate()
@@ -126,13 +126,30 @@ void Ergate::work(Space** sp)
     if(this->next_step == this->now)
     {
         this->now.set(this->now.x + random() % SPACE_INTERVAL , this->now.y + random() % SPACE_INTERVAL);
-        if(++this->hungry_day == TIME_INTERVAL)
+        if(++this->days == TIME_INTERVAL)
             this->lived = false;
     }
         
     else
     {
         this->now = this->next_step;
-        this->hungry_day = 0;
+        this->days = 0;
     }       
+}
+
+void Ant::add_day()
+{
+    if(++(this->days) == TIME_INTERVAL)
+        this->lived = false;
+}
+
+void Food::add_day()
+{
+    this->days++;   
+}
+
+void Pheromone::add_day()
+{
+    this->days++;
+    this->magnitude--;
 }

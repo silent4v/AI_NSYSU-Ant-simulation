@@ -1,3 +1,6 @@
+#ifndef __BASE_OBJECT_H__
+#define __BASE_OBJECT_H__
+
 class Point
 {
     public:
@@ -17,3 +20,5 @@ class Base
     public:
         virtual void add_day() {}
 };
+
+#endif
