@@ -12,10 +12,6 @@ Point::Point()
     set(0,0);
 }
 
-Point::Point(int a,int b)
-{
-    set(a,b);
-}
 
 Point& Point::operator=(Point t)
 {

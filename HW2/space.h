@@ -9,7 +9,7 @@
 #include "base_object.h"
 using namespace std;
 
-#define TIME_INTERVAL 30
+#define TIME_INTERVAL 3
 #define SPACE_INTERVAL 3
 #define FOOD_INTERVAL 
 #define MIN_X 3

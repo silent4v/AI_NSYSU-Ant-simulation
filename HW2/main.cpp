@@ -27,6 +27,7 @@ int main()
             }
             else
             {
+                tt[p->second.x][p->second.y] = 0;
                 cout << "dead" << endl;
             }
             
