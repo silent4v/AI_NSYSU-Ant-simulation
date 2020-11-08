@@ -4,7 +4,7 @@
 using namespace std;
 int main()
 {
-    Space **tt = create_space();
+    Space **tt = create_space(), count = 0;
     bool alive;
     char temp;
     file_write(tt);
@@ -13,12 +13,18 @@ int main()
     
     while(1)
     {
-        queen ++;
+        /*queen ++;
         if(queen == TIME_INTERVAL)
         {
             cout << "game" << endl;
             return 0;
+        }*/
+        if(count == 5)
+        {  
+            count = 0;
+            add_feature(tt, ANT);
         }
+        count++;
         for(p = space_map.begin() ; p != space_map.end() ; p++)
            cout << p->second.x << " " << p->second.y << endl;
         for(p = space_map.begin(); p != space_map.end(); p++)
