@@ -33,9 +33,9 @@ int main()
             //delete_ant(tt, tempx, tempy);
         }
         cout << endl;
-        for(int i = 0 ; i < space_size + (SPACE_INTERVAL * 2) ; i++)
+        for(int i = MIN_X ; i < MAX_X ; i++)
         {
-            for(int j = 0 ; j < space_size + (SPACE_INTERVAL * 2) ; j++)
+            for(int j = MIN_Y ; j < MAX_Y ; j++)
             {
                 if(tt[i][j] > PHEROMONE)
                     tt[i][j]--;
@@ -46,7 +46,7 @@ int main()
         map_update(space_map, cache);
         //add_feature(tt, FOOD);
         file_write(tt);
-        getchar();
+        //getchar();
         sleep(1);
     }
     delete_var(tt);

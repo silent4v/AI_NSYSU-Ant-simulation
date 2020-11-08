@@ -23,6 +23,7 @@ using namespace std;
 #define PHEROMONE 4
 #define FOOD 1
 #define HOME 3
+#define PHEROMONE_CONST 3
 
 typedef int Space;
 const int ant_amount = 5;
