@@ -4,7 +4,7 @@
 using namespace std;
 int main()
 {
-    Space **tt = create_space(), tempx, tempy;
+    Space **tt = create_space();
     bool alive;
     char temp;
     file_write(tt);
@@ -17,21 +17,14 @@ int main()
            cout << p->second.x << " " << p->second.y << endl;
         for(p = space_map.begin(); p != space_map.end(); p++)
         {
-            tempx = p->second.x; tempy = p->second.y;
             alive = p->first->add_day();
             if(alive)
-            {
-                //cout << "alive" << endl;
                 p->first->work(tt);
-                //cout << "finished" << endl;
-            }
             else
             {
                 tt[p->second.x][p->second.y] = 0;
                 cout << "dead" << endl;
             }
-            
-            //delete_ant(tt, tempx, tempy);
         }
         cout << endl;
         for(int i = MIN_X ; i < MAX_X ; i++)
