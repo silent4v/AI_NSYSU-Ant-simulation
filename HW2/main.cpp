@@ -46,6 +46,7 @@ int main()
         map_update(space_map, cache);
         //add_feature(tt, FOOD);
         file_write(tt);
+        getchar();
         sleep(1);
     }
     delete_var(tt);

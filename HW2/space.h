@@ -9,7 +9,7 @@
 #include "base_object.h"
 using namespace std;
 
-#define TIME_INTERVAL 3
+#define TIME_INTERVAL 30
 #define SPACE_INTERVAL 3
 #define FOOD_INTERVAL 
 #define MIN_X 3
@@ -19,9 +19,9 @@ using namespace std;
 //feature table
 #define OUT_RANGE -1
 #define EMPTY 0
-#define ANT 1
+#define ANT 2
 #define PHEROMONE 4
-#define FOOD 2
+#define FOOD 1
 #define HOME 3
 
 typedef int Space;
