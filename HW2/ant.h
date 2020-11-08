@@ -1,6 +1,5 @@
 #ifndef __ANT_H__
 #define __ANT_H__
-#define TIME_INTERVAL 3
 #include "space.h"
 
 class Ant:public Base
