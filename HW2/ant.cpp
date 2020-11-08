@@ -131,14 +131,14 @@ bool Ant::add_day()
     return this->lived;
 }
 
-void Food::add_day()
+bool Food::add_day()
 {
     if(++this->days == TIME_INTERVAL)
         return false;
     return true;
 }
 
-void Pheromone::add_day()
+bool Pheromone::add_day()
 {
     this->days++;
     this->magnitude--;

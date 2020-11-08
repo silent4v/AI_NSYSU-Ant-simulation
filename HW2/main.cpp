@@ -4,6 +4,7 @@ using namespace std;
 int main()
 {
     Space **tt = create_space();
+    bool alive;
     char temp;
     file_write(tt);
     for(p = space_map.begin() ; p != space_map.end() ; p++)
@@ -12,7 +13,15 @@ int main()
     {
         
         for(p = space_map.begin(); p != space_map.end(); p++)
-            p->second->work(tt);
+        {
+            alive = p->second->add_day();
+            if(alive)
+                p->second->work(tt);
+            else
+            {
+                
+            }
+        }
         cout << endl;
         map_update(space_map, cache);
         for(p = space_map.begin() ; p != space_map.end() ; p++)
