@@ -32,6 +32,7 @@ extern map<Base*,Point>space_map;
 extern map<Base*,Point>::iterator p;
 extern map<Base*,Point>cache;
 extern map<Base*,Point>::iterator q;
+extern int queen;
 
 Space** create_space();     //create a space and initialize 
 void add_feature(Space**,int t);     //add feature to space , t : feature table

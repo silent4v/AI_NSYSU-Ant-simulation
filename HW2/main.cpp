@@ -13,6 +13,12 @@ int main()
     
     while(1)
     {
+        queen ++;
+        if(queen == TIME_INTERVAL)
+        {
+            cout << "game" << endl;
+            return 0;
+        }
         for(p = space_map.begin() ; p != space_map.end() ; p++)
            cout << p->second.x << " " << p->second.y << endl;
         for(p = space_map.begin(); p != space_map.end(); p++)

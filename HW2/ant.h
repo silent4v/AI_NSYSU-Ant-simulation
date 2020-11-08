@@ -56,4 +56,5 @@ class Pheromone:public Base
         Pheromone(Point);
 };
 
+int f(int);
 #endif
