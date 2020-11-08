@@ -109,7 +109,10 @@ void Ergate::work(Space** sp)
         
     else
     {
+        p = space_map.find(this->now);
         this->now = this->next_step;
+        add_feature(sp,ANT,this->now,this);
+        space_map.erase(p);
         this->days = 0;
     }       
 }
@@ -144,17 +147,23 @@ void add_feature(Space** s,int t)
     switch(t)
     {
         case ANT:
-            space_map[Point(x+MIN_X,y+MIN_Y)] = new Ergate();
+            space_map[Point(x+MIN_X,y+MIN_Y)] = new Ergate(Point(x+MIN_X,y+MIN_Y));
             break;
         case PHEROMONE:
-            space_map[Point(x+MIN_X,y+MIN_Y)] = new Pheromone();
+            space_map[Point(x+MIN_X,y+MIN_Y)] = new Pheromone(Point(x+MIN_X,y+MIN_Y));
             break;
         case FOOD:
-            space_map[Point(x+MIN_X,y+MIN_Y)] = new Food();
+            space_map[Point(x+MIN_X,y+MIN_Y)] = new Food(Point(x+MIN_X,y+MIN_Y),random()%20);
             break;
         default:
             break;
     }
+}
+
+void add_feature(Space** s,int t,Point o,Base *b)
+{
+    s[o.y][o.x] = t;
+    space_map[o] = b;
 }
 
 void delete_ant(Space** s, int x, int y)              //change space[x][y] ant into nothing
