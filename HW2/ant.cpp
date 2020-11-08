@@ -98,10 +98,17 @@ Point Ergate::sensor(Space** sp)     //Space is defined in
 
 void Ergate::work(Space** sp)
 {
+    int xx,yy;
+    do
+    {
+        xx = random() % SPACE_INTERVAL;
+        yy = random() % SPACE_INTERVAL;
+    } while((xx < MIN_X)||(yy < MIN_Y)||(xx > MAX_X)||(yy > MAX_X));
+
     this->next_step = this->sensor(sp);   //if food-undetected , random walk
     if(this->next_step == this->now)
     {
-        this->now.set(this->now.x + (random() % SPACE_INTERVAL) , this->now.y + (random() % SPACE_INTERVAL));
+        this->now.set(this->now.x + xx , this->now.y + yy);
         add_feature(sp,ANT,this->now,this);
         if(++this->days == TIME_INTERVAL)
             this->lived = false;
