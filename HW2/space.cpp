@@ -4,6 +4,7 @@
 map<Base*,Point>space_map;
 map<Base*,Point>::iterator p;
 map<Base*,Point>cache;
+int queen;
 int** create_space()
 {
     space_map.clear();
@@ -11,7 +12,7 @@ int** create_space()
     for(int i = 0; i < space_size + (SPACE_INTERVAL * 2) ; i++)
         space[i] = new Space [space_size + (SPACE_INTERVAL * 2) ];
     srand(time(NULL));
-    int count;
+    queen = 0;
     for(int i = 0; i < space_size + (SPACE_INTERVAL * 2) ; i++)     //initialize the space
     {
         for(int j = 0; j < space_size + (SPACE_INTERVAL * 2) ; j++)

@@ -100,7 +100,7 @@ Point Ergate::sensor(Space** sp)     //Space is defined in
 
 void Ergate::work(Space** sp)
 {
-    int xx,yy;
+    int xx,yy,sum;
     do
     {
         xx = (random() % (SPACE_INTERVAL*2-1)) - (SPACE_INTERVAL);
@@ -118,7 +118,18 @@ void Ergate::work(Space** sp)
     {
         this->now = this->next_step;
         if(this->now == Point(MIN_X,MIN_Y))
+        {
             this->carry_food = false;
+            queen = 0;
+            sum = 0;
+            do
+            {
+                xx = (random() % (SPACE_INTERVAL));
+                yy = (random() % (SPACE_INTERVAL));
+                sum ++;
+            }while(sp[xx+MIN_X][yy+MIN_Y] != 0 && sum < f(SPACE_INTERVAL));
+        }
+            
         else
             add_feature(sp,ANT,this,this->now);
         if(this->carry_food)
@@ -179,7 +190,16 @@ void add_feature(Space** s,int t)
 void add_feature(Space** s,int t,Base *b,Point o)
 {
     s[o.x][o.y] = t;
-    cache[b] = o;
+    if(t == ANT)
+        cache[b] = o;
+}
+
+int f(int x)
+{
+    int sum = 0;
+    for(int i = 1 ; i <= x ; i++)
+        sum += i*2+1;
+    return sum;
 }
 
 void delete_ant(Space** s, int x, int y)              //change space[x][y] ant into nothing

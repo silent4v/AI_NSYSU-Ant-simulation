@@ -14,6 +14,12 @@ int main()
     
     while(1)
     {
+        queen ++;
+        if(queen == TIME_INTERVAL)
+        {
+            cout << "game" << endl;
+            return 0;
+        }
         for(p = space_map.begin() ; p != space_map.end() ; p++)
            cout << p->second.x << " " << p->second.y << endl;
         for(p = space_map.begin(); p != space_map.end(); p++)
@@ -21,11 +27,7 @@ int main()
             tempx = p->second.x; tempy = p->second.y;
             alive = p->first->add_day();
             if(alive)
-            {
-                //cout << "alive" << endl;
                 p->first->work(tt);
-                //cout << "finished" << endl;
-            }
             else
             {
                 tt[p->second.x][p->second.y] = 0;
