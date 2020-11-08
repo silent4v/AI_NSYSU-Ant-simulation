@@ -1,4 +1,5 @@
 #include "base_object.h"
+#include <iostream>
 
 void Point::set(int a,int b)
 {
@@ -11,6 +12,11 @@ Point::Point()
     set(0,0);
 }
 
+Point::Point(int a,int b)
+{
+    set(a,b);
+}
+
 Point& Point::operator=(Point t)
 {
     this->x = t.x;
@@ -20,7 +26,7 @@ Point& Point::operator=(Point t)
 
 bool operator ==(Point a,Point b)
 {
-    return ((a.x == b.x ) && (a.y == b.y)) ? true : false;
+    return (a.x==b.x && a.y==b.y) ? true : false;
 }
 
 bool operator !=(Point a,Point b)

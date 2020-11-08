@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 {
-    Space **tt = create_space();
+   /* Space **tt = create_space();
     bool alive;
     char temp;
     file_write(tt);
@@ -30,6 +30,9 @@ int main()
         
         cin >> temp;
     }
-    delete_var(tt);
+    delete_var(tt);*/
+    Point a(4,7);
+    Point b(4,8);
+    cout << (a==b) << endl;
     return 0;
 }

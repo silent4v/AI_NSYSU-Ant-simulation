@@ -3,19 +3,6 @@
 
 using namespace std;
 
-Point::Point(int a,int b)
-{
-    set(a,b);
-    if(this->x < MIN_X)
-        this->x = MIN_X;
-    if(this->y < MIN_Y)
-        this->y = MIN_Y;
-    if(this->x > MAX_X)
-        this->x = MAX_X;
-    if(this->y > MAX_Y)
-        this->y = MAX_Y;
-}
-
 Ant::Ant()
 {
     this->lived = true;
