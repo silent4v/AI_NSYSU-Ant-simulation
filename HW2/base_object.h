@@ -10,6 +10,7 @@ class Point
         Point(int,int);
         void set(int,int);
         friend bool operator ==(Point,Point);
+        friend bool operator <(Point,Point);    //required by map
 };
 
 class Base

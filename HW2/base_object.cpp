@@ -22,3 +22,10 @@ bool operator ==(Point a,Point b)
 {
     return ((a.x == b.x ) && (a.y == b.y)) ? true : false;
 }
+
+bool operator <(Point a,Point b)
+{
+    if(a.x == a.y)
+        return (a.y < b.y) ? true : false;
+    return (a.x < b.x) ? ture : false;
+}
