@@ -86,9 +86,9 @@ Point Ergate::sensor(Space** sp)     //Space is defined in
             {
                 case FOOD:
                     this->carry_food = true;
-                    return Point(j,i);
+                    return Point(i,j);
                 case PHEROMONE:
-                    for_return = Point(j,i);
+                    for_return = Point(i,j);
                     break;
                 default:
                     break;
