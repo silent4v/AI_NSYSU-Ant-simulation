@@ -102,7 +102,6 @@ void Ergate::work(Space** sp)
     if(this->next_step == this->now)
     {
         this->now.set(this->now.x + (random() % SPACE_INTERVAL) , this->now.y + (random() % SPACE_INTERVAL));
-        //cout << "(" << this->now.x << "," << this->now.y << ") (" << this->next_step.x << "," << this->next_step.y << ")" << endl;
         add_feature(sp,ANT,this->now,this);
         if(++this->days == TIME_INTERVAL)
             this->lived = false;
@@ -110,11 +109,10 @@ void Ergate::work(Space** sp)
         
     else
     {
-        //p = space_map.find(this->now);
-        cout << "(" << this->now.x << "," << this->now.y << ") (" << this->next_step.x << "," << this->next_step.y << ")" << endl;
+        //cout << "(" << this->now.x << "," << this->now.y << ") (" << this->next_step.x << "," << this->next_step.y << ")" << endl;
+        sp[this->now.x][this->now.y] = 0;
         this->now = this->next_step;
         add_feature(sp,ANT,this->now,this);
-        //space_map.erase(p);
         this->days = 0;
     }       
 }
@@ -165,7 +163,7 @@ void add_feature(Space** s,int t)
 void add_feature(Space** s,int t,Point o,Base *b)
 {
     s[o.y][o.x] = t;
-    space_map[o] = b;
+    cache[o] = b;
 }
 
 void delete_ant(Space** s, int x, int y)              //change space[x][y] ant into nothing

@@ -29,6 +29,8 @@ const int ant_amount = 5;
 const int space_size = 100;
 extern map<Point,Base*>space_map;
 extern map<Point,Base*>::iterator p;
+extern map<Point,Base*>cache;
+extern map<Point,Base*>::iterator q;
 
 Space** create_space();     //create a space and initialize 
 void add_feature(Space**,int t);     //add feature to space , t : feature table
@@ -37,6 +39,6 @@ void delete_ant(Space** s, int x, int y);
 void file_write(Space** s);
 Space** file_read();
 void delete_var(Space** var);
-void map_update(map<Point,Base*>);
+void map_update(map<Point,Base*>&,map<Point,Base*>&);
 
 #endif

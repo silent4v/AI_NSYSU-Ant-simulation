@@ -3,6 +3,7 @@
 
 map<Point,Base*>space_map;
 map<Point,Base*>::iterator p;
+map<Point,Base*>cache;
 int** create_space()
 {
     space_map.clear();
@@ -79,8 +80,7 @@ void delete_var(Space** var)              //release the memory of space variable
     delete var;
 }
 
-void map_update(map<Point,Base*>x)
+void map_update(map<Point,Base*> &x,map<Point,Base*> &y)
 {
-    for(p = x.begin() ; p != x.end() ; p++)
-        cout << "(" << p->first.x << "," << p->first.y << ") (" << p->second->now.y << "," << p->second->now.y << ")" << endl;
+    x = y;
 }

@@ -10,7 +10,7 @@ int main()
     cout << endl;
     for(p = space_map.begin() ; p != space_map.end() ; p++)
         p->second->work(tt);
-    map_update(space_map);
+    map_update(space_map,cache);
     for(p = space_map.begin() ; p != space_map.end() ; p++)
         cout << p->first.x << " " << p->first.y << endl;
     delete_var(tt);
