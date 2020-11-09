@@ -53,7 +53,9 @@ while True:
                 pygame.draw.rect(data[i][j].surface,green,data[i][j].surface.get_rect(),10)
             else:
                 pygame.draw.rect(data[i][j].surface,white,data[i][j].surface.get_rect(),10)
+            #pygame.draw.rect(data[i][j].surface,green,data[i][j].surface.get_rect(),10)
             win.blit(data[i][j].surface,(j*10,i*10))
+    pygame.draw.rect(data[0][0].surface,blue,data[i][j].surface.get_rect(),10)
     pygame.display.update()
     #input()
     #rewrite(data,temp,win_width//cell_width,win_height//cell_width)
